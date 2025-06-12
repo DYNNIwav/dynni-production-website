@@ -1,0 +1,153 @@
+/* Homepage Specific Styles */
+.hero-immersive {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  scroll-snap-align: start;
+}
+
+.hero-logo-float {
+  margin-bottom: 2.5rem;
+  animation: floatLogo 3.5s ease-in-out infinite alternate;
+}
+
+@keyframes floatLogo {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    transform: translateY(-18px) scale(1.04);
+  }
+}
+
+.liquid-logo {
+  width: 96px;
+  height: 110px;
+  filter: drop-shadow(0 8px 32px rgba(0, 224, 211, 0.18));
+}
+
+.hero-headline {
+  font-size: 3.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #fff;
+  margin-bottom: 1.2rem;
+  animation: kineticText 1.2s cubic-bezier(0.77, 0, 0.18, 1) both;
+}
+
+@keyframes kineticText {
+  0% {
+    opacity: 0;
+    letter-spacing: 0.2em;
+    transform: translateY(30px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    letter-spacing: 0.04em;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.hero-tagline {
+  font-size: 1.5rem;
+  color: #b6f3ee;
+  margin-bottom: 2.5rem;
+  font-weight: 400;
+}
+
+.tagline-accent {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.scroll-cue {
+  margin-top: 3.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 40px;
+}
+
+.scroll-cue span {
+  display: block;
+  width: 28px;
+  height: 28px;
+  border-bottom: 3px solid var(--accent);
+  border-right: 3px solid var(--accent);
+  transform: rotate(45deg);
+  animation: scrollCueAnim 1.2s infinite alternate;
+}
+
+@keyframes scrollCueAnim {
+  0% {
+    opacity: 0.2;
+    transform: translateY(0) rotate(45deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(10px) rotate(45deg);
+  }
+}
+
+/* Loading Animation */
+#loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bg);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  transition: opacity 0.6s cubic-bezier(0.77, 0, 0.18, 1);
+}
+
+.loader-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 96px;
+  height: 110px;
+  animation: logoLoad 1.2s cubic-bezier(0.77, 0, 0.18, 1) forwards;
+}
+
+@keyframes logoLoad {
+  0% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
+.loader-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+html,
+body {
+  height: 100%;
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+}
+
+.project-full {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  scroll-snap-align: start;
+}
