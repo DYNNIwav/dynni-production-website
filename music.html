@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DYNNI | Music</title>
     <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/header.css" />
-    <link rel="stylesheet" href="css/footer.css" />
     <link rel="stylesheet" href="css/music.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -29,7 +27,6 @@
       </a>
       <ul class="nav-links">
         <li><a href="index.html">Sound</a></li>
-        <li><a href="photography.html">Photography</a></li>
         <li><a href="programming.html">Programming</a></li>
         <li><a href="music.html" class="active">Music</a></li>
         <li><a href="contact.html">Contact</a></li>
@@ -69,12 +66,20 @@
       <section class="contact-section-full animate-in">
         <div class="contact-content">
           <h2>Contact</h2>
-          <p>
-            Let's work together!
-            <a href="mailto:paalomei@gmail.com" class="contact-link"
-              >paalomei@gmail.com</a
-            >
-          </p>
+          <form
+            class="contact-form glass"
+            action="mailto:paalomei@gmail.com"
+            method="POST"
+            enctype="text/plain"
+          >
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required />
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required />
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+            <button type="submit">Send</button>
+          </form>
         </div>
       </section>
     </main>
