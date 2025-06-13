@@ -41,18 +41,24 @@ window.addEventListener('load', () => {
 });
 
 // Hamburger menu toggle
-const hamburgerBtn = document.getElementById('hamburgerBtn');
-const navLinks = document.querySelector('.nav-links');
-if (hamburgerBtn && navLinks) {
-  hamburgerBtn.addEventListener('click', () => {
-    navLinks.classList.toggle('open');
-  });
-  navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      navLinks.classList.remove('open');
+document.addEventListener('DOMContentLoaded', () => {
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const navLinks = document.querySelector('.nav-links');
+  if (hamburgerBtn && navLinks) {
+    hamburgerBtn.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      hamburgerBtn.setAttribute('aria-expanded', isOpen);
+      hamburgerBtn.classList.toggle('open', isOpen);
     });
-  });
-}
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        hamburgerBtn.setAttribute('aria-expanded', false);
+        hamburgerBtn.classList.remove('open');
+      });
+    });
+  }
+});
 
 // Scroll-triggered glassy navbar
 const mainNav = document.getElementById('mainNav');

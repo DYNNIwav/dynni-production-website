@@ -13,6 +13,9 @@
   --text-secondary: #b0b0b0;
   --border: rgba(255, 255, 255, 0.1);
   --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.18);
+  --header-height: 64px;
+  --content-max-width: 1100px;
+  --content-side-margin: 4vw;
 }
 
 * {
@@ -303,52 +306,6 @@ img {
     opacity: 1;
   }
 }
-/* Hamburger Menu */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 44px;
-  height: 44px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  z-index: 102;
-  margin-left: 1.2rem;
-}
-.hamburger-bar {
-  width: 28px;
-  height: 3px;
-  background: #fff;
-  border-radius: 2px;
-  margin: 4px 0;
-  transition: all 0.3s cubic-bezier(0.77, 0, 0.18, 1);
-}
-@media (max-width: 900px) {
-  .hamburger {
-    display: flex;
-  }
-  .nav-links {
-    position: fixed;
-    top: 64px;
-    right: 0;
-    background: var(--glass);
-    flex-direction: column;
-    gap: 2.2rem;
-    padding: 2.2rem 2.2rem 2.2rem 2.2rem;
-    border-radius: 0 0 0 var(--radius);
-    box-shadow: 0 8px 48px 0 rgba(0, 224, 211, 0.18);
-    backdrop-filter: var(--glass-blur);
-    z-index: 101;
-    display: none;
-    min-width: 60vw;
-    align-items: flex-end;
-  }
-  .nav-links.open {
-    display: flex;
-  }
-}
 /* Always show navbar */
 .navbar.glassy-navbar {
   opacity: 1 !important;
@@ -426,6 +383,13 @@ img {
   padding: 6vh 0 4vh 0;
   position: relative;
   z-index: 2;
+  max-width: var(--content-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: calc(var(--header-height) + 2vw);
+  margin-bottom: 2vw;
+  padding-left: var(--content-side-margin);
+  padding-right: var(--content-side-margin);
 }
 .glass-card {
   background: var(--glass);
@@ -479,27 +443,33 @@ img {
   padding: 0;
 }
 .project-full {
-  min-height: 92vh;
-  width: 100vw;
+  max-width: var(--content-max-width);
+  margin: 2vw auto;
+  padding: calc(var(--header-height) + 2vw) var(--content-side-margin) 2vw
+    var(--content-side-margin);
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 60vh;
+  border-radius: var(--radius);
   background: linear-gradient(120deg, var(--accent, #00e0d3) 0%, #23232a 100%);
-  position: relative;
-  padding: 0 0 0 0;
   transition: background 0.6s cubic-bezier(0.77, 0, 0.18, 1);
 }
 .project-content {
+  background: rgba(24, 24, 27, 0.55);
+  backdrop-filter: blur(18px);
+  border-radius: 18px;
+  box-shadow: 0 4px 32px 0 rgba(0, 0, 0, 0.12);
+  max-width: 900px;
+  width: 100%;
+  margin: 0;
+  padding: 2.5rem 2rem;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 900px;
-  width: 100%;
-  padding: 4vw 2vw;
-  background: rgba(24, 24, 27, 0.18);
-  border-radius: var(--radius);
-  box-shadow: 0 8px 48px 0 rgba(0, 224, 211, 0.1);
 }
 .project-content img {
   width: 100%;
@@ -542,6 +512,13 @@ img {
   scroll-snap-align: start;
   background: linear-gradient(120deg, #18181b 60%, #00e0d3 100%);
   padding: 0;
+  max-width: var(--content-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: calc(var(--header-height) + 2vw);
+  margin-bottom: 2vw;
+  padding-left: var(--content-side-margin);
+  padding-right: var(--content-side-margin);
 }
 .contact-content {
   background: var(--glass);
@@ -617,7 +594,7 @@ img {
     padding: 1rem 0 0.5rem 0;
   }
   .project-content {
-    padding: 1vw 0.2vw;
+    padding: 1.2rem 0.7rem;
   }
   .project-content img {
     max-width: 100vw;
@@ -628,6 +605,23 @@ img {
   }
   .contact-content {
     padding: 2rem 0.7rem;
+  }
+  :root {
+    --header-height: 48px;
+    --content-side-margin: 3vw;
+  }
+  .main-content,
+  .project-full,
+  .glass-card-section,
+  .contact-section-full {
+    margin-top: calc(var(--header-height) + 2vw);
+    margin-bottom: 3vw;
+    padding-left: var(--content-side-margin);
+    padding-right: var(--content-side-margin);
+  }
+  .project-full {
+    padding: calc(var(--header-height) + 3vw) 3vw 3vw 3vw;
+    margin: 3vw auto;
   }
 }
 
@@ -734,4 +728,36 @@ img {
   height: 48px;
   background: linear-gradient(to bottom, transparent, #18181b 90%);
   pointer-events: none;
+}
+
+.glass-bg {
+  background: rgba(24, 24, 27, 0.55);
+  backdrop-filter: blur(18px);
+  border-radius: 18px;
+  box-shadow: 0 4px 32px 0 rgba(0, 0, 0, 0.12);
+}
+
+.navbar,
+.nav-links,
+.hero-headline,
+.project-text h2,
+.glass-card,
+.project-content,
+.contact-content {
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+}
+
+.glass-card,
+.project-content,
+.contact-content {
+  line-height: 1.7;
+  padding: 2.5rem 2rem;
+}
+
+@media (max-width: 600px) {
+  .glass-card,
+  .project-content,
+  .contact-content {
+    padding: 1.2rem 0.7rem;
+  }
 }
